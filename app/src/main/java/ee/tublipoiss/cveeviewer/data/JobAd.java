@@ -1,4 +1,4 @@
-package cv.tublipoiss.ee.cveeviewer.data;
+package ee.tublipoiss.cveeviewer.data;
 
 import android.util.Log;
 

@@ -1,9 +1,9 @@
-package cv.tublipoiss.ee.cveeviewer.ui;
+package ee.tublipoiss.cveeviewer.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
 
-import cv.tublipoiss.ee.cveeviewer.R;
+import ee.tublipoiss.cveeviewer.R;
 import timber.log.Timber;
 
 public class JobListActivity extends Activity {

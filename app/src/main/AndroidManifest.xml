@@ -1,12 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cv.tublipoiss.ee.cveeviewer">
+    package="ee.tublipoiss.cveeviewer">
 
   <uses-permission android:name="android.permission.INTERNET"/>
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
 
   <application
-      android:name="cv.tublipoiss.ee.cveeviewer.MyApplication"
+      android:name="ee.tublipoiss.cveeviewer.MyApplication"
       android:allowBackup="true"
       android:icon="@mipmap/ic_launcher"
       android:label="@string/app_name"
@@ -15,7 +15,7 @@
       android:theme="@style/AppTheme">
 
     <activity
-        android:name=".ui.JobListActivity"
+        android:name="ee.tublipoiss.cveeviewer.ui.JobListActivity"
         android:label="@string/app_name">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>

@@ -1,4 +1,4 @@
-package cv.tublipoiss.ee.cveeviewer
+package ee.tublipoiss.cveeviewer
 
 import org.junit.Test
 

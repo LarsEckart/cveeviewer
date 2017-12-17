@@ -1,4 +1,4 @@
-package cv.tublipoiss.ee.cveeviewer.ui.fragments;
+package ee.tublipoiss.cveeviewer.ui.fragments;
 
 import java.io.IOException;
 import java.io.InputStream;

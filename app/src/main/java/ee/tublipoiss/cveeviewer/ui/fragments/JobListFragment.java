@@ -1,4 +1,4 @@
-package cv.tublipoiss.ee.cveeviewer.ui.fragments;
+package ee.tublipoiss.cveeviewer.ui.fragments;
 
 import android.app.FragmentManager;
 import android.app.ListFragment;
@@ -13,10 +13,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
-import cv.tublipoiss.ee.cveeviewer.R;
-import cv.tublipoiss.ee.cveeviewer.data.JobAd;
-import cv.tublipoiss.ee.cveeviewer.data.JobAdParser;
-import cv.tublipoiss.ee.cveeviewer.data.JobAdsAdapter;
+import ee.tublipoiss.cveeviewer.R;
+import ee.tublipoiss.cveeviewer.data.JobAd;
+import ee.tublipoiss.cveeviewer.data.JobAdParser;
+import ee.tublipoiss.cveeviewer.data.JobAdsAdapter;
 import dagger.android.AndroidInjection;
 import java.util.ArrayList;
 import java.util.List;

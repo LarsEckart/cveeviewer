@@ -1,4 +1,4 @@
-package cv.tublipoiss.ee.cveeviewer.data;
+package ee.tublipoiss.cveeviewer.data;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import cv.tublipoiss.ee.cveeviewer.R;
+import ee.tublipoiss.cveeviewer.R;
 
 public class JobAdsAdapter extends ArrayAdapter<JobAd> {
 

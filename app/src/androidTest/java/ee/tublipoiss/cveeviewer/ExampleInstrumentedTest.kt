@@ -1,4 +1,4 @@
-package cv.tublipoiss.ee.cveeviewer
+package ee.tublipoiss.cveeviewer
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
