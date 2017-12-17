@@ -1,0 +1,13 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <fragment
+      android:name="cv.tublipoiss.ee.cveeviewer.ui.fragments.JobListFragment"
+      android:id="@+id/JobListFragment"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      />
+
+
+</LinearLayout>

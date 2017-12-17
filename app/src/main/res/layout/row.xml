@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/jobAdLinearLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+  <TextView
+      android:id="@+id/jobView"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:paddingLeft="5dp"
+      android:paddingTop="8dp"
+      android:textColor="@color/cv_text_color"
+      android:textIsSelectable="false"
+      android:textSize="18sp"
+      android:textStyle="bold"/>
+
+  <TextView
+      android:id="@+id/employerView"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:padding="5dp"
+      android:textColor="@color/cv_text_color"
+      android:textIsSelectable="false"
+      android:textSize="15sp"/>
+
+
+  <TableLayout
+      android:id="@+id/dateTable"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:layout_gravity="left|center_vertical">
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Published"
+          android:paddingLeft="5dp"
+          android:paddingBottom="8dp"
+          android:textColor="@color/cv_text_color"
+          android:textIsSelectable="false"
+          android:textSize="12sp"
+          android:layout_gravity="left|center_vertical"
+          android:enabled="true"/>
+
+      <TextView
+          android:id="@+id/dateView"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:paddingLeft="5dp"
+          android:paddingBottom="8dp"
+          android:textColor="@color/cv_text_color"
+          android:textIsSelectable="false"
+          android:textSize="12sp"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Deadline"
+          android:paddingLeft="5dp"
+          android:paddingBottom="8dp"
+          android:textColor="@color/cv_text_color"
+          android:textIsSelectable="false"
+          android:textSize="12sp"
+          android:id="@+id/deadlineTextViewLabel"
+          android:layout_gravity="left|center_vertical"/>
+
+      <TextView
+          android:id="@+id/deadlineView"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:paddingLeft="5dp"
+          android:paddingBottom="8dp"
+          android:textColor="@color/cv_text_color"
+          android:textIsSelectable="false"
+          android:textSize="12sp"/>
+    </TableRow>
+  </TableLayout>
+
+</LinearLayout>
