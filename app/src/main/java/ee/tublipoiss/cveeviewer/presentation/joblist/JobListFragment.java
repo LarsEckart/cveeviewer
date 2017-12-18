@@ -16,6 +16,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import dagger.android.AndroidInjection;
 import ee.tublipoiss.cveeviewer.R;
 import ee.tublipoiss.cveeviewer.data.JobAd;
@@ -31,15 +33,16 @@ public class JobListFragment extends ListFragment implements JobListView {
 
     private static final String BUNDLE_JOB_LIST_KEY = "jobListKey";
 
-    private JobListPresenter presenter;
+    @Inject
+    JobListPresenter presenter;
 
     private List<JobAd> jobAds = new ArrayList<JobAd>();
-    private JobListFragment jobListFragment;
     private JobAdsAdapter adapter;
     private Handler handler = new Handler();
 
     @Override
     public void onAttach(Context context) {
+        AndroidInjection.inject(this);
         super.onAttach(context);
     }
 
@@ -47,7 +50,6 @@ public class JobListFragment extends ListFragment implements JobListView {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Timber.d("onActivityCreated");
-        this.presenter = new JobListPresenterImpl();
         this.presenter.start();
 
         prepareUI();
@@ -84,7 +86,7 @@ public class JobListFragment extends ListFragment implements JobListView {
 
     private void prepareUI() {
         FragmentManager fm = getFragmentManager();
-        jobListFragment = (JobListFragment) fm.findFragmentById(R.id.JobListFragment);
+        ListFragment jobListFragment = (JobListFragment) fm.findFragmentById(R.id.JobListFragment);
 
         adapter = new JobAdsAdapter(getActivity(), R.layout.row, jobAds);
         jobListFragment.setListAdapter(adapter);

@@ -1,6 +1,6 @@
 package ee.tublipoiss.cveeviewer.presentation.joblist;
 
-interface JobListPresenter {
+public interface JobListPresenter {
 
     void start();
 }

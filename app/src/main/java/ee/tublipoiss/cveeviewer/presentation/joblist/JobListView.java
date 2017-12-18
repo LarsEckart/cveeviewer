@@ -1,5 +1,5 @@
 package ee.tublipoiss.cveeviewer.presentation.joblist;
 
 
-interface JobListView {
+public interface JobListView {
 }
