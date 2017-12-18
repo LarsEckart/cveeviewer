@@ -71,6 +71,7 @@ public class JobListFragment extends ListFragment implements JobListView {
             });
             t.start();
         }
+
     }
 
     @Override
@@ -82,6 +83,11 @@ public class JobListFragment extends ListFragment implements JobListView {
             jobStringList.add(job.toJSON().toString());
         }
         outState.putStringArrayList(BUNDLE_JOB_LIST_KEY, jobStringList);
+    }
+
+    @Override
+    public void showLoading() {
+        this.setListShown(false);
     }
 
     private void prepareUI() {
