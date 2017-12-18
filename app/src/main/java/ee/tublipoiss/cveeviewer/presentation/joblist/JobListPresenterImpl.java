@@ -16,5 +16,8 @@ public class JobListPresenterImpl implements JobListPresenter {
     @Override
     public void start() {
         Timber.d("I'm alive");
+        if (view != null) {
+            Timber.d("i've a view!");
+        }
     }
 }

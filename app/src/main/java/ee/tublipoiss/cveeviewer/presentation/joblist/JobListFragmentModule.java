@@ -12,7 +12,7 @@ public class JobListFragmentModule {
     }
 
     @Provides
-    JobListPresenter provideJobListPresenter(JobListView jobListView) {//}, ApiService apiService) {
-        return new JobListPresenterImpl(jobListView);
+    JobListPresenter provideJobListPresenter(final JobListPresenterImpl presenter) {
+        return presenter;
     }
 }
