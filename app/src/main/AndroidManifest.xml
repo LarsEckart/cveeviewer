@@ -15,7 +15,7 @@
       android:theme="@style/AppTheme">
 
     <activity
-        android:name="ee.tublipoiss.cveeviewer.ui.JobListActivity"
+        android:name="ee.tublipoiss.cveeviewer.presentation.joblist.JobListActivity"
         android:label="@string/app_name">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>

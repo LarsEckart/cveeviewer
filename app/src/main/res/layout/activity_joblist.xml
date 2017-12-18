@@ -3,7 +3,7 @@
     android:layout_height="match_parent">
 
   <fragment
-      android:name="ee.tublipoiss.cveeviewer.ui.fragments.JobListFragment"
+      android:name="ee.tublipoiss.cveeviewer.presentation.joblist.JobListFragment"
       android:id="@+id/JobListFragment"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
