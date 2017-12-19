@@ -9,12 +9,8 @@ import dagger.Module;
 import dagger.Provides;
 import ee.tublipoiss.cveeviewer.data.JobAdRepository;
 import ee.tublipoiss.cveeviewer.data.JobAdRepositoryImpl;
-import ee.tublipoiss.cveeviewer.presentation.joblist.JobListActivityComponent;
-import ee.tublipoiss.cveeviewer.presentation.joblist.JobListFragmentComponent;
 
-@Module(subcomponents = {
-        JobListActivityComponent.class,
-        JobListFragmentComponent.class})
+@Module
 public class AppModule {
 
     @Provides
