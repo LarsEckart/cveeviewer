@@ -15,7 +15,7 @@ import okhttp3.mockwebserver.RecordedRequest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RemoteJobAdsDataSource_should {
-    
+
     @Test
     public void execute_http_request_to_endpoint() throws Exception {
         // given
@@ -29,7 +29,7 @@ public class RemoteJobAdsDataSource_should {
         remoteJobAdsDataSource.getJobAds(new LoadJobAdsCallback() {
             @Override
             public void onJobAdsLoaded(List<JobAd> jobAds) {
-
+                assertThat(true).isFalse();
             }
         });
 

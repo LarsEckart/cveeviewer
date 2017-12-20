@@ -8,7 +8,7 @@ import ee.tublipoiss.cveeviewer.data.JobAd;
 import ee.tublipoiss.cveeviewer.data.source.JobAdRepository;
 import ee.tublipoiss.cveeviewer.data.source.LoadJobAdsCallback;
 
-public class JobListPresenterImpl implements JobListPresenter {
+public class JobListPresenterImpl implements JobListPresenter, LoadJobAdsCallback {
 
     private final JobListView view;
     private JobAdRepository repository;
@@ -22,11 +22,11 @@ public class JobListPresenterImpl implements JobListPresenter {
     @Override
     public void start() {
         view.showLoading();
-        repository.getJobAds(new LoadJobAdsCallback() {
-            @Override
-            public void onJobAdsLoaded(List<JobAd> jobAds) {
-                view.showJobAds(jobAds);
-            }
-        });
+        repository.getJobAds(this);
+    }
+
+    @Override
+    public void onJobAdsLoaded(List<JobAd> jobAds) {
+        view.showJobAds(jobAds);
     }
 }

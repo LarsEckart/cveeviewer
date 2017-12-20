@@ -1,8 +1,12 @@
 package ee.tublipoiss.cveeviewer.presentation.joblist;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
+import ee.tublipoiss.cveeviewer.data.JobAd;
 import ee.tublipoiss.cveeviewer.data.source.JobAdRepository;
 import ee.tublipoiss.cveeviewer.data.source.LoadJobAdsCallback;
 
@@ -11,11 +15,12 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class JobListPresenterImplTest {
+public class JobListPresenterImpl_should {
 
     private JobListView view;
     private JobAdRepository repository;
-    private JobListPresenter presenter;
+
+    private JobListPresenterImpl presenter;
 
     @Before
     public void setUp() throws Exception {
@@ -44,5 +49,17 @@ public class JobListPresenterImplTest {
 
         // then
         verify(repository).getJobAds(any(LoadJobAdsCallback.class));
+    }
+
+    @Test
+    public void tell_view_on_job_ad_loaded_callback_to_display_job_ads() throws Exception {
+        // given
+        ArrayList<JobAd> jobAds = new ArrayList<>();
+
+        // when
+        presenter.onJobAdsLoaded(jobAds);
+
+        // then
+        verify(view).showJobAds(jobAds);
     }
 }
