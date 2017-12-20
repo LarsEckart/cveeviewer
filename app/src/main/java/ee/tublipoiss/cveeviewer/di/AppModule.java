@@ -8,6 +8,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import ee.tublipoiss.cveeviewer.data.JobAdParser;
 import ee.tublipoiss.cveeviewer.data.source.JobAdRepository;
 import ee.tublipoiss.cveeviewer.data.source.remote.RemoteDataSourceResponseConverter;
 import ee.tublipoiss.cveeviewer.data.source.remote.RemoteJobAdsDataSource;
@@ -37,7 +38,7 @@ public class AppModule {
     @Provides
     @Singleton
     RemoteDataSourceResponseConverter provideConverter() {
-        return new RemoteDataSourceResponseConverter();
+        return new JobAdParser();
     }
 
     @Provides

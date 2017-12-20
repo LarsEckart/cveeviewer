@@ -130,7 +130,7 @@ public class JobListFragment extends ListFragment implements JobListView {
 
             ContentFetcher ct = new ContentFetcher();
             ct.setUrl(url);
-            final List<JobAd> jobs = new JobAdParser().parse(ct.fetch());
+            final List<JobAd> jobs = new JobAdParser().convert(ct.fetch());
 
             handler.post(new Runnable() {
                 @Override

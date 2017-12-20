@@ -15,10 +15,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import ee.tublipoiss.cveeviewer.data.source.remote.RemoteDataSourceResponseConverter;
+
 /**
  * Created by lars on 21.05.13.
  */
-public class JobAdParser {
+public class JobAdParser implements RemoteDataSourceResponseConverter {
 
     static final String TAG = JobAdParser.class.getSimpleName();
 
@@ -33,7 +35,8 @@ public class JobAdParser {
     static final String EMPLOYER = "employer";
     static final String DESCRIPTION = "description";
 
-    public List<JobAd> parse(InputStream in) {
+    @Override
+    public List<JobAd> convert(InputStream in) {
 
         final List<JobAd> jobAds = new ArrayList<JobAd>();
         final JobAd currentJobAd = new JobAd();
