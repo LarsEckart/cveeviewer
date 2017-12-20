@@ -3,8 +3,8 @@ package ee.tublipoiss.cveeviewer.presentation.joblist;
 import org.junit.Before;
 import org.junit.Test;
 
-import ee.tublipoiss.cveeviewer.data.JobAdRepository;
-import ee.tublipoiss.cveeviewer.data.LoadJobAdsCallback;
+import ee.tublipoiss.cveeviewer.data.source.JobAdRepository;
+import ee.tublipoiss.cveeviewer.data.source.LoadJobAdsCallback;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;

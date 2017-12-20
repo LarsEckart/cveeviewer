@@ -22,7 +22,6 @@ import dagger.android.AndroidInjection;
 import ee.tublipoiss.cveeviewer.R;
 import ee.tublipoiss.cveeviewer.data.JobAd;
 import ee.tublipoiss.cveeviewer.data.JobAdParser;
-import ee.tublipoiss.cveeviewer.data.JobAdsAdapter;
 import ee.tublipoiss.cveeviewer.data.ContentFetcher;
 import timber.log.Timber;
 

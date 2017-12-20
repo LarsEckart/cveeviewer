@@ -5,9 +5,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import ee.tublipoiss.cveeviewer.data.JobAd;
-import ee.tublipoiss.cveeviewer.data.JobAdRepository;
-import ee.tublipoiss.cveeviewer.data.LoadJobAdsCallback;
-import timber.log.Timber;
+import ee.tublipoiss.cveeviewer.data.source.JobAdRepository;
+import ee.tublipoiss.cveeviewer.data.source.LoadJobAdsCallback;
 
 public class JobListPresenterImpl implements JobListPresenter {
 

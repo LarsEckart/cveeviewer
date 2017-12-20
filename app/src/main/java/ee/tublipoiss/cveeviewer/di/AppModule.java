@@ -3,12 +3,13 @@ package ee.tublipoiss.cveeviewer.di;
 import android.app.Application;
 import android.content.Context;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import ee.tublipoiss.cveeviewer.data.JobAdRepository;
-import ee.tublipoiss.cveeviewer.data.JobAdRepositoryImpl;
+import ee.tublipoiss.cveeviewer.data.source.JobAdRepository;
+import ee.tublipoiss.cveeviewer.data.source.remote.RemoteJobAdsDataSource;
 
 @Module
 public class AppModule {
@@ -21,8 +22,19 @@ public class AppModule {
 
     @Provides
     @Singleton
-    JobAdRepository provideRepository(JobAdRepositoryImpl repository) {
-        return repository;
+    JobAdRepository provideRepository(RemoteJobAdsDataSource ds) {
+        return new JobAdRepository(ds);
+    }
+
+    @Provides
+    @Singleton
+    RemoteJobAdsDataSource provideRemoteDataSource(@Named("baseUrl")String baseUrl) {
+        return new RemoteJobAdsDataSource(baseUrl);
+    }
+
+    @Provides @Named("baseUrl")
+    String provideBaseUrl() {
+        return "https://www.cv.ee/";
     }
 
     // provide okhttp and such from here
