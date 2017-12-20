@@ -1,8 +1,12 @@
 package ee.tublipoiss.cveeviewer.presentation.joblist;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import ee.tublipoiss.cveeviewer.data.JobAd;
 import ee.tublipoiss.cveeviewer.data.JobAdRepository;
+import ee.tublipoiss.cveeviewer.data.LoadJobAdsCallback;
 import timber.log.Timber;
 
 public class JobListPresenterImpl implements JobListPresenter {
@@ -19,6 +23,11 @@ public class JobListPresenterImpl implements JobListPresenter {
     @Override
     public void start() {
         view.showLoading();
-        repository.getJobAds();
+        repository.getJobAds(new LoadJobAdsCallback() {
+            @Override
+            public void onJobAdsLoaded(List<JobAd> jobAds) {
+                view.showJobAds(jobAds);
+            }
+        });
     }
 }

@@ -1,8 +1,5 @@
 package ee.tublipoiss.cveeviewer.data;
 
-import java.util.Collections;
-import java.util.List;
-
 import javax.inject.Inject;
 
 public class JobAdRepositoryImpl implements JobAdRepository {
@@ -12,7 +9,6 @@ public class JobAdRepositoryImpl implements JobAdRepository {
     }
 
     @Override
-    public List<JobAd> getJobAds() {
-        return Collections.emptyList();
+    public void getJobAds(LoadJobAdsCallback callback) {
     }
 }

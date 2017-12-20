@@ -4,8 +4,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ee.tublipoiss.cveeviewer.data.JobAdRepository;
+import ee.tublipoiss.cveeviewer.data.LoadJobAdsCallback;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -41,6 +43,6 @@ public class JobListPresenterImplTest {
         presenter.start();
 
         // then
-        verify(repository).getJobAds();
+        verify(repository).getJobAds(any(LoadJobAdsCallback.class));
     }
 }

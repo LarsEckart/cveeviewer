@@ -90,6 +90,15 @@ public class JobListFragment extends ListFragment implements JobListView {
         this.setListShown(false);
     }
 
+    @Override
+    public void showJobAds(List<JobAd> jobAds) {
+        this.setListShown(true);
+        adapter = new JobAdsAdapter(getActivity(), R.layout.row, jobAds);
+        FragmentManager fm = getFragmentManager();
+        ListFragment jobListFragment = (JobListFragment) fm.findFragmentById(R.id.JobListFragment);
+        jobListFragment.setListAdapter(adapter);
+    }
+
     private void prepareUI() {
         FragmentManager fm = getFragmentManager();
         ListFragment jobListFragment = (JobListFragment) fm.findFragmentById(R.id.JobListFragment);
