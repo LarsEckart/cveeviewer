@@ -9,6 +9,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import ee.tublipoiss.cveeviewer.data.source.JobAdRepository;
+import ee.tublipoiss.cveeviewer.data.source.remote.RemoteDataSourceResponseConverter;
 import ee.tublipoiss.cveeviewer.data.source.remote.RemoteJobAdsDataSource;
 
 @Module
@@ -28,11 +29,19 @@ public class AppModule {
 
     @Provides
     @Singleton
-    RemoteJobAdsDataSource provideRemoteDataSource(@Named("baseUrl")String baseUrl) {
-        return new RemoteJobAdsDataSource(baseUrl);
+    RemoteJobAdsDataSource provideRemoteDataSource(
+            @Named("baseUrl") String baseUrl, RemoteDataSourceResponseConverter converter) {
+        return new RemoteJobAdsDataSource(baseUrl, converter);
     }
 
-    @Provides @Named("baseUrl")
+    @Provides
+    @Singleton
+    RemoteDataSourceResponseConverter provideConverter() {
+        return new RemoteDataSourceResponseConverter();
+    }
+
+    @Provides
+    @Named("baseUrl")
     String provideBaseUrl() {
         return "https://www.cv.ee/";
     }
