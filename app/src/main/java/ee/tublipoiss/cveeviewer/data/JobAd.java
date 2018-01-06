@@ -1,7 +1,5 @@
 package ee.tublipoiss.cveeviewer.data;
 
-import android.util.Log;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -11,6 +9,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import timber.log.Timber;
 
 /**
  * Created by lars on 21.05.13.
@@ -144,7 +144,7 @@ public class JobAd {
             jsonObject.put(JSON_KEY_PUBDATE, this.getDate());
             jsonObject.put(JSON_KEY_DEADLINE, this.getDeadline());
         } catch (JSONException e) {
-            Log.e(TAG, e.toString());
+            Timber.e(TAG, e.toString());
         }
 
         return jsonObject;
@@ -161,7 +161,7 @@ public class JobAd {
             jobAd.setDate(jsonObject.optString(JSON_KEY_PUBDATE));
             jobAd.setDeadlineJson(jsonObject.optString(JSON_KEY_DEADLINE));
         } catch (JSONException e) {
-            Log.e(TAG, e.toString());
+            Timber.e(TAG, e.toString());
         }
         return jobAd;
     }

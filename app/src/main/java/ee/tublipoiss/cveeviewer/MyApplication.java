@@ -1,5 +1,7 @@
 package ee.tublipoiss.cveeviewer;
 
+import com.facebook.stetho.Stetho;
+
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
 import ee.tublipoiss.cveeviewer.di.AppComponent;
@@ -15,6 +17,7 @@ public class MyApplication extends DaggerApplication {
 
         if (BuildConfig.DEBUG) {
             Timber.plant(new DebugTree());
+            Stetho.initializeWithDefaults(this);
         }
     }
 

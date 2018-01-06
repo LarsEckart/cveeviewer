@@ -4,7 +4,6 @@ import android.sax.Element;
 import android.sax.EndElementListener;
 import android.sax.EndTextElementListener;
 import android.sax.RootElement;
-import android.util.Log;
 import android.util.Xml;
 
 import org.xml.sax.SAXException;
@@ -16,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 import ee.tublipoiss.cveeviewer.data.source.remote.RemoteDataSourceResponseConverter;
+import timber.log.Timber;
 
 /**
  * Created by lars on 21.05.13.
@@ -89,13 +89,13 @@ public class JobAdParser implements RemoteDataSourceResponseConverter {
         try {
             Xml.parse(in, Xml.Encoding.UTF_8, root.getContentHandler());
         } catch (IOException e) {
-            Log.i(TAG, "error, " + e.getClass());
+            Timber.e(e.getMessage());
             return Collections.emptyList();
         } catch (SAXException e) {
-            Log.i(TAG, "error, " + e.getClass());
+            Timber.e(e.getMessage());
             return Collections.emptyList();
         }
-        Log.i(TAG, "done parsing, found " + jobAds.size() + " job ads");
+        Timber.d(TAG, "done parsing, found " + jobAds.size() + " job ads");
         return jobAds;
     }
 }

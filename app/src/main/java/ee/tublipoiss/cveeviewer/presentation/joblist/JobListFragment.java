@@ -4,14 +4,10 @@ import android.app.FragmentManager;
 import android.app.ListFragment;
 import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +17,6 @@ import javax.inject.Inject;
 import dagger.android.AndroidInjection;
 import ee.tublipoiss.cveeviewer.R;
 import ee.tublipoiss.cveeviewer.data.JobAd;
-import ee.tublipoiss.cveeviewer.data.JobAdParser;
-import ee.tublipoiss.cveeviewer.data.ContentFetcher;
 import timber.log.Timber;
 
 /**
@@ -37,7 +31,6 @@ public class JobListFragment extends ListFragment implements JobListView {
 
     private List<JobAd> jobAds = new ArrayList<JobAd>();
     private JobAdsAdapter adapter;
-    private Handler handler = new Handler();
 
     @Override
     public void onAttach(Context context) {
@@ -50,28 +43,6 @@ public class JobListFragment extends ListFragment implements JobListView {
         super.onActivityCreated(savedInstanceState);
         Timber.d("onActivityCreated");
         this.presenter.start();
-
-        /*
-        prepareUI();
-
-        if ((savedInstanceState != null) && savedInstanceState.containsKey(BUNDLE_JOB_LIST_KEY)) {
-            Timber.d("restoring savedInstanceState");
-            adapter.clear();
-            ArrayList<String> jsonJobList = savedInstanceState.getStringArrayList(BUNDLE_JOB_LIST_KEY);
-            assert jsonJobList != null;
-            for (String jsonString : jsonJobList) {
-                adapter.add(JobAd.fromJSON(jsonString));
-            }
-            //adapter.notifyDataSetChanged();
-        } else {
-            Thread t = new Thread(new Runnable() {
-                public void run() {
-                    loadJobAds();
-                }
-            });
-            t.start();
-        }
-        */
     }
 
     @Override
@@ -91,60 +62,18 @@ public class JobListFragment extends ListFragment implements JobListView {
     }
 
     @Override
-    public void showJobAds(List<JobAd> jobAds) {
-        this.setListShown(true);
-        adapter = new JobAdsAdapter(getActivity(), R.layout.row, jobAds);
-        FragmentManager fm = getFragmentManager();
-        ListFragment jobListFragment = (JobListFragment) fm.findFragmentById(R.id.JobListFragment);
-        jobListFragment.setListAdapter(adapter);
-    }
-
-    private void prepareUI() {
-        FragmentManager fm = getFragmentManager();
-        ListFragment jobListFragment = (JobListFragment) fm.findFragmentById(R.id.JobListFragment);
-
-        adapter = new JobAdsAdapter(getActivity(), R.layout.row, jobAds);
-        jobListFragment.setListAdapter(adapter);
-    }
-
-    private void loadJobAds() {
-
-        String url =
-                "https://www.cv.ee/job-ads/all?type=rss&Tegvk=information-technology&Location=tartu-county&Town=tartu-county-tartu&Language=inglise";
-
-        ConnectivityManager connectivity =
-                (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = connectivity.getActiveNetworkInfo();
-        // TODO got force error without any internet connection
-        boolean isConnected = ((activeNetwork != null) && (activeNetwork.isConnected()));
-        if (!isConnected) {
-            // TODO implement DialogFragment to redirect users to settings or cancel
-            Timber.d("no internet");
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(getActivity(), "No internet connection!", Toast.LENGTH_LONG).show();
-                }
-            });
-        } else {
-            Timber.d("loading jobs from the internet");
-
-            ContentFetcher ct = new ContentFetcher();
-            ct.setUrl(url);
-            final List<JobAd> jobs = new JobAdParser().convert(ct.fetch());
-
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    adapter.clear();
-                    for (JobAd job : jobs) {
-                        adapter.add(job);
-                    }
-                    //adapter.notifyDataSetChanged();
-                    Toast.makeText(getActivity(), "Job ads loaded!", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
+    public void showJobAds(final List<JobAd> jobAds) {
+        this.getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Timber.d("RUNNING");
+                setListShown(true);
+                adapter = new JobAdsAdapter(getActivity(), R.layout.row, jobAds);
+                FragmentManager fm = getFragmentManager();
+                ListFragment jobListFragment = (JobListFragment) fm.findFragmentById(R.id.JobListFragment);
+                jobListFragment.setListAdapter(adapter);
+            }
+        });
     }
 
     @Override
