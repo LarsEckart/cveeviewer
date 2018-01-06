@@ -51,6 +51,7 @@ public class JobListFragment extends ListFragment implements JobListView {
         Timber.d("onActivityCreated");
         this.presenter.start();
 
+        /*
         prepareUI();
 
         if ((savedInstanceState != null) && savedInstanceState.containsKey(BUNDLE_JOB_LIST_KEY)) {
@@ -70,7 +71,7 @@ public class JobListFragment extends ListFragment implements JobListView {
             });
             t.start();
         }
-
+        */
     }
 
     @Override

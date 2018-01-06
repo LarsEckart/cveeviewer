@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -60,8 +62,8 @@ public class RemoteJobAdsDataSource_should {
     @Test
     public void convert_response_to_our_model() throws Exception {
         // given
-        //TODO: remove absolute path otherwise tests won't run in CI server
-        File file = new File("/Users/larse/github/cveeviewer/app/src/test/resources/response.xml");
+        URI resource = this.getClass().getClassLoader().getResource("response.xml").toURI();
+        File file = new File(resource);
         InputStream targetStream = new FileInputStream(file);
         BufferedReader buf = new BufferedReader(new InputStreamReader(targetStream));
 
