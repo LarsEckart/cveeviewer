@@ -11,7 +11,6 @@ import ee.tublipoiss.cveeviewer.data.source.JobAdsDataSource;
 import ee.tublipoiss.cveeviewer.data.source.LoadJobAdsCallback;
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.Headers;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -41,26 +40,22 @@ public class RemoteJobAdsDataSource implements JobAdsDataSource {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
+                Timber.e(e.getMessage());
                 // TODO:
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+                if (!response.isSuccessful()) {
+                    throw new IOException("Unexpected code " + response);
+                }
                 try (ResponseBody responseBody = response.body()) {
                     InputStream inputStream = responseBody.byteStream();
                     List<JobAd> jobAds = converter.convert(inputStream);
-                    Timber.d("found " + jobAds.size() + " jobs");
+                    Timber.i("found " + jobAds.size() + " jobs");
 
                     callback.onJobAdsLoaded(jobAds);
 
-                    if (!response.isSuccessful())
-                        throw new IOException("Unexpected code " + response);
-
-                    Headers responseHeaders = response.headers();
-                    for (int i = 0, size = responseHeaders.size(); i < size; i++) {
-                        Timber.d(responseHeaders.name(i) + ": " + responseHeaders.value(i));
-                    }
                 }
             }
         });

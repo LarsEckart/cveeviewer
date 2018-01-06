@@ -66,7 +66,6 @@ public class JobListFragment extends ListFragment implements JobListView {
         this.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Timber.d("RUNNING");
                 setListShown(true);
                 adapter = new JobAdsAdapter(getActivity(), R.layout.row, jobAds);
                 FragmentManager fm = getFragmentManager();

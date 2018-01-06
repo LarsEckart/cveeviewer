@@ -95,7 +95,6 @@ public class JobAdParser implements RemoteDataSourceResponseConverter {
             Timber.e(e.getMessage());
             return Collections.emptyList();
         }
-        Timber.d(TAG, "done parsing, found " + jobAds.size() + " job ads");
         return jobAds;
     }
 }

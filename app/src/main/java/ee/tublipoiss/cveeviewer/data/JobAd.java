@@ -144,7 +144,7 @@ public class JobAd {
             jsonObject.put(JSON_KEY_PUBDATE, this.getDate());
             jsonObject.put(JSON_KEY_DEADLINE, this.getDeadline());
         } catch (JSONException e) {
-            Timber.e(TAG, e.toString());
+            Timber.e(e.getMessage());
         }
 
         return jsonObject;
@@ -161,7 +161,7 @@ public class JobAd {
             jobAd.setDate(jsonObject.optString(JSON_KEY_PUBDATE));
             jobAd.setDeadlineJson(jsonObject.optString(JSON_KEY_DEADLINE));
         } catch (JSONException e) {
-            Timber.e(TAG, e.toString());
+            Timber.e(e.getMessage());
         }
         return jobAd;
     }
