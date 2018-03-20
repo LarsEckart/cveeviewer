@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 import ee.tublipoiss.cveeviewer.data.JobAd;
 import ee.tublipoiss.cveeviewer.data.source.LoadJobAdsCallback;
+import okhttp3.OkHttpClient;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
@@ -38,7 +39,7 @@ public class RemoteJobAdsDataSource_should {
 
         converter = mock(RemoteDataSourceResponseConverter.class);
 
-        remoteJobAdsDataSource = new RemoteJobAdsDataSource(url, converter);
+        remoteJobAdsDataSource = new RemoteJobAdsDataSource(url, converter, new OkHttpClient.Builder().build());
     }
 
     @Test
