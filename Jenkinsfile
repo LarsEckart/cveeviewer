@@ -9,6 +9,7 @@ pipeline {
   stages {
     stage('Compile') {
       steps {
+        sh './gradlew clean'
         // Compile the app and its dependencies
         sh './gradlew compileMockDebugSources'
       }
